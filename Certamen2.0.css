@@ -1,29 +1,107 @@
 /* ================================================
-   COMICMARKET - Hoja Css de la pagina más vacan de todas
+   COMICMARKET - Hoja de estilos principal
+   Archivo: estilos.css
    ================================================ */
 
 
-
+/* ================================
+   VARIABLES - colores, fuentes y espaciado
+   Sistema de diseño profesional
+   ================================ */
 :root {
+  /* ========== PALETA DE COLORES ==========*/
+  /* Colores base/neutrales */
   --color-fondo:       #0d0d0d;
   --color-superficie:  #161616;
   --color-tarjeta:     #1e1e1e;
   --color-borde:       #2e2e2e;
-  --color-rojo:        #e63946;
-  --color-naranja:     #f4a261;
-  --color-texto:       #f0ece4;
-  --color-gris:        #888888;
-
-  --fuente-titulo: 'Bebas Neue', sans-serif;
-  --fuente-cuerpo: 'Nunito', sans-serif;
-
-  --borde-redondo: 12px;
-  --velocidad:     0.3s;
-
-  /* Colores para los estados de cada producto */
-  --disponible: #2ecc71;
-  --agotado:    #e74c3c;
-  --preventa:   #f39c12;
+  --color-overlay:     rgba(0, 0, 0, 0.5);
+  
+  /* Colores primarios y secundarios */
+  --color-primario:    #e63946;      /* Rojo corporativo */
+  --color-secundario:  #f4a261;      /* Naranja complementario */
+  --color-acento:      #2ecc71;      /* Verde para estados positivos */
+  
+  /* Colores de texto */
+  --color-texto:       #f0ece4;      /* Texto principal */
+  --color-texto-muted: #888888;      /* Texto secundario/deshabilitado */
+  --color-texto-error: #e74c3c;      /* Texto de error */
+  
+  /* Estados de productos */
+  --estado-disponible: #2ecc71;      /* Verde */
+  --estado-agotado:    #e74c3c;      /* Rojo */
+  --estado-preventa:   #f39c12;      /* Naranja */
+  
+  /* ========== TIPOGRAFÍA ==========*/
+  --fuente-titulo:     'Bebas Neue', 'Arial Black', sans-serif;
+  --fuente-cuerpo:     'Nunito', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  --fuente-codigo:     'Courier New', 'Courier', monospace;
+  
+  /* Escalas de tamaño (tipografía) */
+  --fs-xs:             0.75rem;      /* 12px */
+  --fs-sm:             0.875rem;     /* 14px */
+  --fs-base:           1rem;         /* 16px */
+  --fs-lg:             1.125rem;     /* 18px */
+  --fs-xl:             1.25rem;      /* 20px */
+  --fs-2xl:            1.5rem;       /* 24px */
+  --fs-3xl:            2rem;         /* 32px */
+  --fs-4xl:            2.5rem;       /* 40px */
+  --fs-hero:           clamp(3rem, 7vw, 6rem); /* Responsive */
+  
+  /* Pesos de fuente */
+  --fw-light:          300;
+  --fw-normal:         400;
+  --fw-semibold:       600;
+  --fw-bold:           700;
+  --fw-extrabold:      800;
+  
+  /* ========== ESPACIADO (Escala 8px) ==========*/
+  --space-xs:          0.25rem;      /* 4px */
+  --space-sm:          0.5rem;       /* 8px */
+  --space-md:          1rem;         /* 16px */
+  --space-lg:          1.5rem;       /* 24px */
+  --space-xl:          2rem;         /* 32px */
+  --space-2xl:         3rem;         /* 48px */
+  --space-3xl:         4rem;         /* 64px */
+  
+  /* ========== BORDES Y RADIOS ==========*/
+  --radius-sm:         4px;
+  --radius-md:         8px;
+  --radius-lg:         12px;
+  --radius-full:       9999px;
+  
+  /* ========== SOMBRAS ==========*/
+  --shadow-sm:         0 1px 2px rgba(0, 0, 0, 0.05);
+  --shadow-md:         0 4px 6px rgba(0, 0, 0, 0.1);
+  --shadow-lg:         0 10px 15px rgba(0, 0, 0, 0.1);
+  --shadow-xl:         0 20px 25px rgba(0, 0, 0, 0.15);
+  --shadow-hover:      0 12px 32px rgba(0, 0, 0, 0.5);
+  
+  /* ========== TRANSICIONES Y ANIMACIONES ==========*/
+  --transition-fast:   0.15s ease-out;
+  --transition-base:   0.3s ease-in-out;
+  --transition-slow:   0.5s ease-in-out;
+  
+  --duration-spin:     4s linear infinite;
+  --duration-pulse:    3s ease-in-out infinite;
+  
+  /* ========== BREAKPOINTS (Mobile First) ==========*/
+  --breakpoint-sm:     640px;
+  --breakpoint-md:     1024px;
+  --breakpoint-lg:     1280px;
+  --breakpoint-xl:     1536px;
+  
+  /* ========== Z-INDEX ==========*/
+  --z-dropdown:        100;
+  --z-sticky:          200;
+  --z-fixed:           300;
+  --z-modal-overlay:   400;
+  --z-modal:           500;
+  
+  /* ========== OPACIDADES ==========*/
+  --opacity-disabled:  0.5;
+  --opacity-hover:     0.75;
+  --opacity-overlay:   0.75;
 }
 
 
@@ -40,7 +118,7 @@ body {
   background-color: var(--color-fondo);
   color: var(--color-texto);
   font-family: var(--fuente-cuerpo);
-  font-size: 16px;
+  font-size: var(--fs-base);
   line-height: 1.6;
 }
 
@@ -61,11 +139,11 @@ img {
 header {
   position: sticky;
   top: 0;
-  z-index: 100;
+  z-index: var(--z-sticky);
   background-color: rgba(13, 13, 13, 0.93);
   backdrop-filter: blur(8px);
   border-bottom: 1px solid var(--color-borde);
-  padding: 0 2rem;
+  padding: 0 var(--space-xl);
 }
 
 /* Flexbox para poner todo en una fila horizontal */
@@ -73,33 +151,34 @@ nav {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  max-width: 1280px;
+  max-width: var(--breakpoint-lg);
   margin: 0 auto;
   height: 68px;
-  gap: 1.5rem;
+  gap: var(--space-lg);
 }
 
 .logo {
   font-family: var(--fuente-titulo);
   font-size: 2rem;
-  color: var(--color-rojo);
+  font-weight: var(--fw-bold);
+  color: var(--color-primario);
   letter-spacing: 2px;
 }
 
 /* Lista de links del menu */
 .menu-lista {
   display: flex;
-  gap: 1.5rem;
+  gap: var(--space-lg);
   list-style: none;
 }
 
 .menu-lista a {
-  font-weight: 600;
-  font-size: 0.9rem;
-  color: var(--color-gris);
+  font-weight: var(--fw-semibold);
+  font-size: var(--fs-sm);
+  color: var(--color-texto-muted);
   text-transform: uppercase;
   letter-spacing: 1px;
-  transition: color var(--velocidad);
+  transition: color var(--transition-base);
 }
 
 .menu-lista a:hover {
@@ -112,16 +191,16 @@ nav {
   align-items: center;
   background: var(--color-superficie);
   border: 1px solid var(--color-borde);
-  border-radius: 8px;
+  border-radius: var(--radius-md);
   padding: 0.4rem 0.8rem;
   gap: 0.5rem;
   flex: 0 1 260px;
-  transition: border-color var(--velocidad);
+  transition: border-color var(--transition-base);
 }
 
 /* Cuando el usuario hace click dentro, el borde cambia a rojo */
 .caja-busqueda:focus-within {
-  border-color: var(--color-rojo);
+  border-color: var(--color-primario);
 }
 
 .caja-busqueda input {
@@ -130,12 +209,12 @@ nav {
   outline: none;
   color: var(--color-texto);
   font-family: var(--fuente-cuerpo);
-  font-size: 0.9rem;
+  font-size: var(--fs-sm);
   width: 100%;
 }
 
 .caja-busqueda input::placeholder {
-  color: var(--color-gris);
+  color: var(--color-texto-muted);
 }
 
 
@@ -147,43 +226,44 @@ nav {
   display: grid;
   grid-template-columns: 1fr 1fr;
   align-items: center;
-  gap: 3rem;
-  max-width: 1280px;
+  gap: var(--space-3xl);
+  max-width: var(--breakpoint-lg);
   margin: 0 auto;
-  padding: 5rem 2rem 4rem;
+  padding: var(--space-2xl) var(--space-xl) var(--space-xl);
 }
 
 /* Titulo grande del hero */
 .hero-titulo {
   font-family: var(--fuente-titulo);
-  font-size: clamp(3rem, 7vw, 6rem);
+  font-size: var(--fs-hero);
+  font-weight: var(--fw-bold);
   line-height: 1;
 }
 
 /* La palabra en rojo tiene animacion de color */
 .hero-titulo span {
-  color: var(--color-rojo);
+  color: var(--color-primario);
   animation: parpadeo-color 3s ease-in-out infinite;
 }
 
 /* ANIMACION 1: el color cambia entre rojo y naranja */
 @keyframes parpadeo-color {
-  0%, 100% { color: var(--color-rojo); }
-  50%       { color: var(--color-naranja); }
+  0%, 100% { color: var(--color-primario); }
+  50%       { color: var(--color-secundario); }
 }
 
 .hero-descripcion {
-  margin-top: 1rem;
-  font-size: 1.1rem;
-  color: var(--color-gris);
+  margin-top: var(--space-md);
+  font-size: var(--fs-lg);
+  color: var(--color-texto-muted);
   max-width: 480px;
 }
 
 /* Botones del hero, uno al lado del otro */
 .hero-botones {
   display: flex;
-  gap: 1rem;
-  margin-top: 2rem;
+  gap: var(--space-md);
+  margin-top: var(--space-xl);
   flex-wrap: wrap;
 }
 
@@ -192,12 +272,12 @@ nav {
   display: inline-block;
   padding: 0.75rem 1.75rem;
   font-family: var(--fuente-cuerpo);
-  font-weight: 700;
-  font-size: 0.95rem;
-  border-radius: 8px;
+  font-weight: var(--fw-bold);
+  font-size: var(--fs-sm);
+  border-radius: var(--radius-md);
   border: 2px solid transparent;
   cursor: pointer;
-  transition: transform var(--velocidad), background-color var(--velocidad);
+  transition: transform var(--transition-base), background-color var(--transition-base);
 }
 
 /* Cuando pasas el mouse el boton sube un poquito */
@@ -207,7 +287,7 @@ nav {
 
 /* Boton rojo relleno */
 .boton-principal {
-  background-color: var(--color-rojo);
+  background-color: var(--color-primario);
   color: #fff;
 }
 
@@ -232,13 +312,13 @@ nav {
   display: grid;
   grid-template-columns: 1fr 1fr;
   grid-template-rows: auto auto;
-  gap: 1rem;
+  gap: var(--space-md);
 }
 
 /* La imagen grande ocupa las 2 filas a la izquierda */
 .hero-imagen-grande {
   grid-row: 1 / 3;
-  border-radius: var(--borde-redondo);
+  border-radius: var(--radius-lg);
   overflow: hidden;
   position: relative;
 }
@@ -248,10 +328,10 @@ nav {
   content: '';
   position: absolute;
   inset: -3px;
-  border-radius: calc(var(--borde-redondo) + 3px);
-  background: conic-gradient(var(--color-rojo), var(--color-naranja), var(--color-rojo));
+  border-radius: calc(var(--radius-lg) + 3px);
+  background: conic-gradient(var(--color-primario), var(--color-secundario), var(--color-primario));
   z-index: -1;
-  animation: girar-borde 4s linear infinite;
+  animation: girar-borde var(--duration-spin);
 }
 
 @keyframes girar-borde {
@@ -264,12 +344,12 @@ nav {
   height: 100%;
   object-fit: cover;
   display: block;
-  border-radius: var(--borde-redondo);
+  border-radius: var(--radius-lg);
 }
 
 /* Las dos imagenes chicas a la derecha */
 .hero-imagen-chica {
-  border-radius: var(--borde-redondo);
+  border-radius: var(--radius-lg);
   overflow: hidden;
   border: 1px solid var(--color-borde);
 }
@@ -286,44 +366,44 @@ nav {
    FILTROS (chips de editorial)
    ================================ */
 .seccion-filtros {
-  max-width: 1280px;
+  max-width: var(--breakpoint-lg);
   margin: 0 auto;
-  padding: 0 2rem 2rem;
+  padding: 0 var(--space-xl) var(--space-xl);
 }
 
 .filtros-titulo {
-  font-size: 0.8rem;
+  font-size: var(--fs-xs);
   text-transform: uppercase;
   letter-spacing: 2px;
-  color: var(--color-gris);
-  margin-bottom: 0.8rem;
+  color: var(--color-texto-muted);
+  margin-bottom: var(--space-sm);
 }
 
 /* Los chips van en fila y si no caben se bajan a la siguiente */
 .filtros-lista {
   display: flex;
-  gap: 0.6rem;
+  gap: var(--space-sm);
   flex-wrap: wrap;
 }
 
 .chip {
   padding: 0.4rem 1rem;
-  font-size: 0.85rem;
-  font-weight: 700;
-  border-radius: 999px;
+  font-size: var(--fs-sm);
+  font-weight: var(--fw-bold);
+  border-radius: var(--radius-full);
   border: 1px solid var(--color-borde);
   background: var(--color-superficie);
-  color: var(--color-gris);
+  color: var(--color-texto-muted);
   cursor: pointer;
-  transition: background-color var(--velocidad), color var(--velocidad), border-color var(--velocidad);
+  transition: background-color var(--transition-base), color var(--transition-base), border-color var(--transition-base);
 }
 
 /* Chip activo o cuando pasas el mouse */
 .chip:hover,
 .chip:focus {
-  background-color: var(--color-rojo);
+  background-color: var(--color-primario);
   color: #fff;
-  border-color: var(--color-rojo);
+  border-color: var(--color-primario);
 }
 
 
@@ -332,47 +412,44 @@ nav {
    Grid de 2 columnas
    ================================ */
 .contenedor-catalogo {
-  max-width: 1280px;
+  max-width: var(--breakpoint-lg);
   margin: 0 auto;
-  padding: 0 2rem 4rem;
+  padding: 0 var(--space-xl) var(--space-2xl);
   display: grid;
   grid-template-columns: 1fr 280px;
-  gap: 2rem;
+  gap: var(--space-xl);
 }
 
 .titulo-seccion {
   font-family: var(--fuente-titulo);
-  font-size: 2.2rem;
-  margin-bottom: 1.5rem;
+  font-size: var(--fs-4xl);
+  font-weight: var(--fw-bold);
+  margin-bottom: var(--space-lg);
 }
 
 /* La vitrina de tarjetas se adapta sola al ancho disponible */
 .vitrina {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
-  gap: 1.5rem;
+  gap: var(--space-lg);
 }
 
 
-/* ================================
-   TARJETA DE PRODUCTO
-   ================================ */
+/* Tarjetas de Productos */
 .tarjeta {
   background: var(--color-tarjeta);
   border: 1px solid var(--color-borde);
-  border-radius: var(--borde-redondo);
+  border-radius: var(--radius-lg);
   overflow: hidden;
-  transition: transform var(--velocidad), box-shadow var(--velocidad);
+  transition: transform var(--transition-base), box-shadow var(--transition-base);
   position: relative;
 }
 
-/* ANIMACION 3: la tarjeta sube y tiene sombra al pasar el mouse */
 .tarjeta:hover {
   transform: translateY(-6px);
-  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.5);
+  box-shadow: var(--shadow-hover);
 }
 
-/* Contenedor de la portada del libro */
 .tarjeta-portada {
   width: 100%;
   aspect-ratio: 2 / 3;
@@ -385,112 +462,106 @@ nav {
   height: 100%;
   object-fit: cover;
   display: block;
-  transition: transform var(--velocidad);
+  transition: transform var(--transition-base);
 }
 
-/* La imagen se agranda un poco cuando pasas el mouse */
 .tarjeta:hover .tarjeta-portada img {
   transform: scale(1.05);
 }
 
-/* Capa roja que aparece encima de la imagen al hacer hover */
 .tarjeta-overlay {
   position: absolute;
   inset: 0;
-  background: rgba(230, 57, 70, 0.75);
+  background: rgba(230, 57, 70, var(--opacity-overlay));
   display: flex;
   align-items: center;
   justify-content: center;
-  font-weight: 700;
+  font-weight: var(--fw-bold);
   color: #fff;
-  font-size: 0.9rem;
+  font-size: var(--fs-sm);
   opacity: 0;
-  transition: opacity var(--velocidad);
+  transition: opacity var(--transition-base);
 }
 
 .tarjeta:hover .tarjeta-overlay {
   opacity: 1;
 }
 
-/* Etiqueta de estado arriba a la izquierda */
 .etiqueta {
   position: absolute;
-  top: 0.6rem;
-  left: 0.6rem;
+  top: var(--space-sm);
+  left: var(--space-sm);
   padding: 0.2rem 0.6rem;
-  font-size: 0.7rem;
-  font-weight: 700;
+  font-size: var(--fs-xs);
+  font-weight: var(--fw-bold);
   text-transform: uppercase;
-  border-radius: 4px;
+  border-radius: var(--radius-sm);
   z-index: 2;
 }
 
-/* Los 3 estados del producto usan las variables CSS de arriba */
 .etiqueta-disponible {
-  background-color: var(--disponible);
+  background-color: var(--estado-disponible);
   color: #000;
 }
 
 .etiqueta-agotado {
-  background-color: var(--agotado);
+  background-color: var(--estado-agotado);
   color: #fff;
 }
 
 .etiqueta-preventa {
-  background-color: var(--preventa);
+  background-color: var(--estado-preventa);
   color: #000;
 }
 
-/* Texto debajo de la portada */
 .tarjeta-info {
-  padding: 0.9rem;
+  padding: var(--space-sm);
 }
 
 .tarjeta-nombre {
-  font-weight: 700;
-  font-size: 0.95rem;
+  font-weight: var(--fw-bold);
+  font-size: var(--fs-sm);
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
 }
 
 .tarjeta-autor {
-  font-size: 0.78rem;
-  color: var(--color-gris);
-  margin-top: 0.2rem;
+  font-size: var(--fs-xs);
+  color: var(--color-texto-muted);
+  margin-top: var(--space-xs);
 }
 
 .tarjeta-precio {
   font-family: var(--fuente-titulo);
-  font-size: 1.3rem;
-  color: var(--color-rojo);
-  margin-top: 0.5rem;
+  font-size: var(--fs-xl);
+  font-weight: var(--fw-bold);
+  color: var(--color-primario);
+  margin-top: var(--space-sm);
 }
 
 
-/* ================================
-   ASIDE - Panel lateral de novedades
-   ================================ */
+/* Panel lateral de novedades che */
 aside {
   background: var(--color-superficie);
   border: 1px solid var(--color-borde);
-  border-radius: var(--borde-redondo);
-  padding: 1.5rem;
+  border-radius: var(--radius-lg);
+  padding: var(--space-lg);
   align-self: start;
 }
 
 .aside-titulo {
   font-family: var(--fuente-titulo);
-  font-size: 1.4rem;
-  margin-bottom: 1rem;
+  font-size: var(--fs-2xl);
+  font-weight: var(--fw-bold);
+  margin-bottom: var(--space-md);
 }
 
-/* Cada item del aside va en fila con Flexbox */
 .aside-item {
   display: flex;
-  gap: 0.8rem;
+  gap: var(--space-sm);
   align-items: center;
-  padding: 0.7rem 0;
+  padding: var(--space-sm) 0;
   border-bottom: 1px solid var(--color-borde);
 }
 
@@ -498,11 +569,11 @@ aside {
   border-bottom: none;
 }
 
-/* Miniatura del libro en el aside */
+/* Miniatura del libro */
 .aside-miniatura {
   width: 48px;
   height: 64px;
-  border-radius: 4px;
+  border-radius: var(--radius-sm);
   overflow: hidden;
   flex-shrink: 0;
 }
@@ -514,92 +585,90 @@ aside {
 }
 
 .aside-nombre {
-  font-size: 0.88rem;
-  font-weight: 700;
+  font-size: var(--fs-sm);
+  font-weight: var(--fw-bold);
 }
 
 .aside-autor {
-  font-size: 0.78rem;
-  color: var(--color-gris);
+  font-size: var(--fs-xs);
+  color: var(--color-texto-muted);
 }
 
 
-/* ================================
-   FOOTER
-   ================================ */
+/* Pie de pagina*/
 footer {
   background: var(--color-superficie);
   border-top: 1px solid var(--color-borde);
-  padding: 3rem 2rem;
+  padding: var(--space-2xl) var(--space-xl);
 }
 
 /* Grid que se adapta segun el ancho de pantalla */
 .footer-contenido {
-  max-width: 1280px;
+  max-width: var(--breakpoint-lg);
   margin: 0 auto;
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-  gap: 2rem;
+  gap: var(--space-xl);
 }
 
 .footer-marca {
   font-family: var(--fuente-titulo);
-  font-size: 2rem;
-  color: var(--color-rojo);
+  font-size: var(--fs-3xl);
+  font-weight: var(--fw-bold);
+  color: var(--color-primario);
 }
 
 .footer-descripcion {
-  font-size: 0.85rem;
-  color: var(--color-gris);
-  margin-top: 0.5rem;
+  font-size: var(--fs-sm);
+  color: var(--color-texto-muted);
+  margin-top: var(--space-sm);
 }
 
 .footer-columna h4 {
-  font-size: 0.85rem;
+  font-size: var(--fs-sm);
   text-transform: uppercase;
   letter-spacing: 1.5px;
-  color: var(--color-gris);
-  margin-bottom: 0.8rem;
+  color: var(--color-texto-muted);
+  margin-bottom: var(--space-sm);
+  font-weight: var(--fw-bold);
 }
 
 .footer-columna ul {
   list-style: none;
   display: flex;
   flex-direction: column;
-  gap: 0.5rem;
+  gap: var(--space-sm);
 }
 
 .footer-columna a {
-  font-size: 0.9rem;
+  font-size: var(--fs-base);
   color: var(--color-texto);
-  transition: color var(--velocidad);
+  transition: color var(--transition-base);
 }
 
 .footer-columna a:hover {
-  color: var(--color-rojo);
+  color: var(--color-primario);
 }
 
 /* Linea final de copyright */
 .footer-copyright {
-  max-width: 1280px;
-  margin: 2rem auto 0;
-  padding-top: 1.5rem;
+  max-width: var(--breakpoint-lg);
+  margin: var(--space-xl) auto 0;
+  padding-top: var(--space-lg);
   border-top: 1px solid var(--color-borde);
-  font-size: 0.8rem;
-  color: var(--color-gris);
+  font-size: var(--fs-xs);
+  color: var(--color-texto-muted);
   text-align: center;
 }
 
 
-/* ================================
-   MEDIA QUERIES - pantallas pequeñas
-   Enfoque Desktop First
-   ================================ */
+/* 
+   MEDIA QUERIES - pantallas pequeñas 
+*/
 
 /* Tablet (menos de 1024px de ancho) */
 @media (max-width: 1024px) {
 
-  /* El hero pasa a 1 sola columna */
   .hero {
     grid-template-columns: 1fr;
     text-align: center;
@@ -612,31 +681,26 @@ footer {
     justify-content: center;
   }
 
-  /* El aside se mueve abajo del catalogo */
   .contenedor-catalogo {
     grid-template-columns: 1fr;
   }
 }
 
-/* Movil (menos de 640px de ancho) */
+/* Movil */
 @media (max-width: 640px) {
 
-  /* El menu se oculta en movil */
   .menu-lista {
     display: none;
   }
 
-  /* La busqueda ocupa todo el ancho */
   .caja-busqueda {
     flex: 1 1 100%;
   }
 
-  /* Las tarjetas se hacen mas chicas */
   .vitrina {
     grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
   }
 
-  /* Las imagenes del hero se ocultan en movil */
   .hero-imagenes {
     display: none;
   }

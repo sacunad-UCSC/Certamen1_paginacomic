@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title> ComicFokinGOD – Mangas y Comics</title>
+
+  <!-- Fuentes de Google -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Nunito:wght@400;600;700&display=swap" rel="stylesheet" />
+
+  <!-- Hoja de estilos externa -->
+  <link rel="stylesheet" href="Certamen2.0.css" />
+</head>
+
+<body>
+
+  <!-- ==================
+       ENCABEZADO
+       ================== -->
+  <header>
+    <nav>
+
+      <span class="logo">ComicFokinGOD</span>
+
+      <ul class="menu-lista">
+        <li><a href="#">Manga</a></li>
+        <li><a href="#">Comics</a></li>
+        <li><a href="#">Novelas</a></li>
+        <li><a href="#">Preventas</a></li>
+      </ul>
+
+      <!-- Barra de busqueda simulada -->
+      <div class="caja-busqueda">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none"
+             stroke="currentColor" stroke-width="2" aria-hidden="true">
+          <circle cx="11" cy="11" r="8"/>
+          <line x1="21" y1="21" x2="16.65" y2="16.65"/>
+        </svg>
+        <input type="text" placeholder="Buscar titulo, autor..." aria-label="Buscar" />
+      </div>
+
+    </nav>
+  </header>
+
+
+  <!-- ==================
+       CONTENIDO PRINCIPAL
+       ================== -->
+  <main>
+
+    <!-- HERO -->
+    <section class="hero" aria-label="Seccion principal">
+
+      <!-- Lado izquierdo: texto -->
+      <div class="hero-texto">
+        <h1 class="hero-titulo">
+          Quedaras de la <br/>
+          <span> REQUIEM </span><br/>
+          de tanto leer.
+        </h1>
+        <p class="hero-descripcion">
+          Mangas, comics y novelas graficas de Ivrea, Panini, Marvel, DC y mas.
+          Envios a todo Chile.
+        </p>
+        <div class="hero-botones">
+          <a href="#catalogo" class="boton boton-principal">Ver catalogo</a>
+        </div>
+      </div>
+
+      <!-- Lado derecho: portadas destacadas -->
+      <div class="hero-imagenes" role="img" aria-label="Portadas destacadas">
+
+        <!-- Imagen grande (ocupa 2 filas con grid-row en el CSS) -->
+        <div class="hero-imagen-grande">
+          <img
+            src="https://images.cdn1.buscalibre.com/fit-in/360x360/04/73/0473600513fe93c5d97f3dcdcaf85bc0.jpg"
+            alt="Portada de Jojo'S Bizarre Adventure: Part 5 "
+          />
+        </div>
+
+        <!-- Dos imagenes chicas apiladas a la derecha -->
+        <div class="hero-imagen-chica">
+          <img
+            src="https://cdnx.jumpseller.com/mangabreria/image/75642570/03.jpg"
+            alt="Portada de Absolute Batman"
+          />
+        </div>
+
+        <div class="hero-imagen-chica">
+          <img
+            src="https://cdnx.jumpseller.com/mangabreria/image/60576142/12.jpg"
+            alt="Portada de Batman One Dark Knight"
+          />
+        </div>
+
+      </div>
+
+    </section>
+
+    <section class="seccion-filtros" aria-label="Filtros">
+      <p class="filtros-titulo">Filtrar por editorial / demografia</p>
+      <div class="filtros-lista" role="group">
+        <button class="chip">Todos</button>
+        <button class="chip">Ivrea</button>
+        <button class="chip">Panini</button>
+        <button class="chip">Norma</button>
+        <button class="chip">Marvel</button>
+        <button class="chip">DC</button>
+        <button class="chip">Shonen</button>
+        <button class="chip">Seinen</button>
+        <button class="chip">Shojo</button>
+      </div>
+    </section>
+
+    <div class="contenedor-catalogo">
+
+      <!-- VITRINA DE PRODUCTOS -->
+      <section id="catalogo" aria-label="Catalogo de productos">
+
+        <h2 class="titulo-seccion">Ultimos lanzamientos</h2>
+
+        <div class="vitrina">
+
+          <!-- Tarjeta 1 -->
+          <article class="tarjeta">
+            <div class="tarjeta-portada">
+              <span class="etiqueta etiqueta-disponible">Disponible</span>
+              <img
+                src="https://cdnx.jumpseller.com/mangabreria/image/75937199/08.jpg"
+                alt="Portada de Ultimate Spider-Man 04"
+              />
+              <div class="tarjeta-overlay">Ver detalles</div>
+            </div>
+            <div class="tarjeta-info">
+              <p class="tarjeta-nombre">Ultimate Spider-Man 04</p>
+              <p class="tarjeta-autor">Bendis · Marvel</p>
+              <p class="tarjeta-precio">$81.256 </p>
+            </div>
+          </article>
+
+          <!-- Tarjeta 2 -->
+          <article class="tarjeta">
+            <div class="tarjeta-portada">
+              <span class="etiqueta etiqueta-preventa">Preventa</span>
+              <img
+                src="https://cdnx.jumpseller.com/mangabreria/image/49483825/21.jpg"
+                alt="Portada de One Piece Vol. 107"
+              />
+              <div class="tarjeta-overlay">Ver detalles</div>
+            </div>
+            <div class="tarjeta-info">
+              <p class="tarjeta-nombre">One Piece Vol. 107</p>
+              <p class="tarjeta-autor">Eiichiro Oda · Ivrea</p>
+              <p class="tarjeta-precio">$8.990</p>
+            </div>
+          </article>
+
+          <!-- Tarjeta 3 -->
+          <article class="tarjeta">
+            <div class="tarjeta-portada">
+              <span class="etiqueta etiqueta-agotado">Agotado</span>
+              <img
+                src="https://cdnx.jumpseller.com/mangabreria/image/16738284/Chainsaw_Man_03_1200.jpg"
+                alt="Portada de Chainsaw Man Vol. 3"
+              />
+              <div class="tarjeta-overlay">Ver detalles</div>
+            </div>
+            <div class="tarjeta-info">
+              <p class="tarjeta-nombre">Chainsaw Man Vol. 3</p>
+              <p class="tarjeta-autor">Tatsuki Fujimoto · Ivrea</p>
+              <p class="tarjeta-precio">$8.990</p>
+            </div>
+          </article>
+
+          <!-- Tarjeta 4 -->
+          <article class="tarjeta">
+            <div class="tarjeta-portada">
+              <span class="etiqueta etiqueta-disponible">Disponible</span>
+              <img
+                src="https://cdnx.jumpseller.com/mangabreria/image/60576142/12.jpg"
+                alt="Portada de Batman One Dark Knight"
+              />
+              <div class="tarjeta-overlay">Ver detalles</div>
+            </div>
+            <div class="tarjeta-info">
+              <p class="tarjeta-nombre">Batman One Dark Knight </p>
+              <p class="tarjeta-autor">Jock · DC</p>
+              <p class="tarjeta-precio">$18.545</p>
+            </div>
+          </article>
+
+          <!-- Tarjeta 5 -->
+          <article class="tarjeta">
+            <div class="tarjeta-portada">
+              <span class="etiqueta etiqueta-preventa">Preventa</span>
+              <img
+                src="https://cdnx.jumpseller.com/mangabreria/image/73511216/09.jpg"
+                alt="Portada de Dragon Ball Super Vol. 24"
+              />
+              <div class="tarjeta-overlay">Ver detalles</div>
+            </div>
+            <div class="tarjeta-info">
+              <p class="tarjeta-nombre">Dragon Ball Super Vol. 24</p>
+              <p class="tarjeta-autor">Akira Toriyama · Panini</p>
+              <p class="tarjeta-precio">$13.500</p>
+            </div>
+          </article>
+
+          <!-- Tarjeta 6 -->
+          <article class="tarjeta">
+            <div class="tarjeta-portada">
+              <span class="etiqueta etiqueta-preventa">Preventa</span>
+              <img
+                src="https://cdnx.jumpseller.com/mangabreria/image/7937135/204130_1000x1000.jpg"
+                alt="Portada de Maus"
+              />
+              <div class="tarjeta-overlay">Ver detalles</div>
+            </div>
+            <div class="tarjeta-info">
+              <p class="tarjeta-nombre">Jojo´s Bizarre Adventure Vol. 04</p>
+              <p class="tarjeta-autor">Hirohiko Araki · Panini</p>
+              <p class="tarjeta-precio">$14.500</p>
+            </div>
+          </article>
+
+          <!-- Tarjeta 7 -->
+          <article class="tarjeta">
+            <div class="tarjeta-portada">
+              <span class="etiqueta etiqueta-disponible">Disponible</span>
+              <img
+                src="https://cdnx.jumpseller.com/mangabreria/image/26022646/MY-HERO-ACADEMIA-N.33-QMBOH033_1200.jpg"
+                alt="Portada de My Hero Academia Vol. 33"
+              />
+              <div class="tarjeta-overlay">Ver detalles</div>
+            </div>
+            <div class="tarjeta-info">
+              <p class="tarjeta-nombre">My Hero Academia Vol. 33</p>
+              <p class="tarjeta-autor">Kohei Horikoshi · Panini</p>
+              <p class="tarjeta-precio">$8.213</p>
+            </div>
+          </article>
+
+          <!-- Tarjeta 8 -->
+          <article class="tarjeta">
+            <div class="tarjeta-portada">
+              <span class="etiqueta etiqueta-disponible">Disponible</span>
+              <img
+                src="https://images.cdn1.buscalibre.com/fit-in/360x360/04/73/0473600513fe93c5d97f3dcdcaf85bc0.jpg"
+                alt="Portada de Jojo'S Bizarre Adventure: Part 5 Vol. 5"
+              />
+              <div class="tarjeta-overlay">Ver detalles</div>
+            </div>
+            <div class="tarjeta-info">
+              <p class="tarjeta-nombre">Jojo'S Bizarre Adventure: Part 5 Vol. 5</p>
+              <p class="tarjeta-autor">Hirohiko Araki · Panini</p>
+              <p class="tarjeta-precio">$14.500</p>
+            </div>
+          </article>
+
+        </div>
+      </section>
+
+      <aside aria-label="Novedades de la semana">
+        <h3 class="aside-titulo">Esta semana</h3>
+
+        <div class="aside-item">
+          <div class="aside-miniatura">
+            <img
+              src="https://cdnx.jumpseller.com/mangabreria/image/37538330/19.jpg"
+              alt="Dragon Ball Super"
+            />
+          </div>
+          <div>
+            <p class="aside-nombre">Dragon Ball Super Vol. 20</p>
+            <p class="aside-autor">Akira Toriyama</p>
+          </div>
+        </div>
+
+        <div class="aside-item">
+          <div class="aside-miniatura">
+            <img
+              src="https://cdnx.jumpseller.com/mangabreria/image/12311917/Demon_Slayer__08_1200.jpg"
+              alt="Demon Slayer"
+            />
+          </div>
+          <div>
+            <p class="aside-nombre">Demon Slayer Vol. 08</p>
+            <p class="aside-autor">Koyoharu Gotouge</p>
+          </div>
+        </div>
+
+        <div class="aside-item">
+          <div class="aside-miniatura">
+            <img
+              src="https://cdnx.jumpseller.com/mangabreria/image/7937135/204130_1000x1000.jpg?1584297131"
+              alt="Jojo´s"
+            />
+          </div>
+          <div>
+            <p class="aside-nombre">Jojo´s Bizarre Adventure Vol. 04</p>
+            <p class="aside-autor">Hirohiko Araki</p>
+          </div>
+        </div>
+
+      </aside>
+
+    </div>
+
+  </main>
+
+  <footer>
+    <div class="footer-contenido">
+
+      <div>
+        <p class="footer-marca">ComicMarket</p>
+        <p class="footer-descripcion">
+          Tu tienda especializada en<br/>
+          comics, mangas.
+        </p>
+      </div>
+
+      <div class="footer-columna">
+        <h4>Categorias</h4>
+        <ul>
+          <li><a href="#">Manga</a></li>
+          <li><a href="#">Comics Americanos</a></li>
+          <li><a href="#">Novela Grafica</a></li>
+          <li><a href="#">Ediciones Especiales</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-columna">
+        <h4>Editoriales</h4>
+        <ul>
+          <li><a href="#">Ivrea</a></li>
+          <li><a href="#">Panini</a></li>
+          <li><a href="#">Norma Editorial</a></li>
+          <li><a href="#">Marvel / DC</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-columna">
+        <h4>Ayuda</h4>
+        <ul>
+          <li><a href="#">Como comprar</a></li>
+          <li><a href="#">Despachos</a></li>
+          <li><a href="#">Devoluciones</a></li>
+          <li><a href="#">Contacto</a></li>
+        </ul>
+      </div>
+
+    </div>
+
+    <p class="footer-copyright">
+      &copy; 2026 ComicMarket &mdash; Todos los derechos reservados.
+    </p>
+  </footer>
+
+</body>
+</html>

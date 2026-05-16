@@ -1,0 +1,646 @@
+/* ================================================
+   COMICMARKET - Hoja de estilos principal
+   Archivo: estilos.css
+   ================================================ */
+
+
+/* ================================
+   VARIABLES - colores y fuentes
+   ================================ */
+:root {
+  --color-fondo:       #0d0d0d;
+  --color-superficie:  #161616;
+  --color-tarjeta:     #1e1e1e;
+  --color-borde:       #2e2e2e;
+  --color-rojo:        #e63946;
+  --color-naranja:     #f4a261;
+  --color-texto:       #f0ece4;
+  --color-gris:        #888888;
+
+  --fuente-titulo: 'Bebas Neue', sans-serif;
+  --fuente-cuerpo: 'Nunito', sans-serif;
+
+  --borde-redondo: 12px;
+  --velocidad:     0.3s;
+
+  /* Colores para los estados de cada producto */
+  --disponible: #2ecc71;
+  --agotado:    #e74c3c;
+  --preventa:   #f39c12;
+}
+
+
+/* ================================
+   RESET - quitar estilos por defecto
+   ================================ */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: var(--color-fondo);
+  color: var(--color-texto);
+  font-family: var(--fuente-cuerpo);
+  font-size: 16px;
+  line-height: 1.6;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+
+/* ================================
+   ENCABEZADO (HEADER)
+   ================================ */
+header {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background-color: rgba(13, 13, 13, 0.93);
+  backdrop-filter: blur(8px);
+  border-bottom: 1px solid var(--color-borde);
+  padding: 0 2rem;
+}
+
+/* Flexbox para poner todo en una fila horizontal */
+nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  max-width: 1280px;
+  margin: 0 auto;
+  height: 68px;
+  gap: 1.5rem;
+}
+
+.logo {
+  font-family: var(--fuente-titulo);
+  font-size: 2rem;
+  color: var(--color-rojo);
+  letter-spacing: 2px;
+}
+
+/* Lista de links del menu */
+.menu-lista {
+  display: flex;
+  gap: 1.5rem;
+  list-style: none;
+}
+
+.menu-lista a {
+  font-weight: 600;
+  font-size: 0.9rem;
+  color: var(--color-gris);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  transition: color var(--velocidad);
+}
+
+.menu-lista a:hover {
+  color: var(--color-texto);
+}
+
+/* Caja de busqueda */
+.caja-busqueda {
+  display: flex;
+  align-items: center;
+  background: var(--color-superficie);
+  border: 1px solid var(--color-borde);
+  border-radius: 8px;
+  padding: 0.4rem 0.8rem;
+  gap: 0.5rem;
+  flex: 0 1 260px;
+  transition: border-color var(--velocidad);
+}
+
+/* Cuando el usuario hace click dentro, el borde cambia a rojo */
+.caja-busqueda:focus-within {
+  border-color: var(--color-rojo);
+}
+
+.caja-busqueda input {
+  background: transparent;
+  border: none;
+  outline: none;
+  color: var(--color-texto);
+  font-family: var(--fuente-cuerpo);
+  font-size: 0.9rem;
+  width: 100%;
+}
+
+.caja-busqueda input::placeholder {
+  color: var(--color-gris);
+}
+
+
+/* ================================
+   SECCION HERO
+   Grid de 2 columnas: texto | imagenes
+   ================================ */
+.hero {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: center;
+  gap: 3rem;
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 5rem 2rem 4rem;
+}
+
+/* Titulo grande del hero */
+.hero-titulo {
+  font-family: var(--fuente-titulo);
+  font-size: clamp(3rem, 7vw, 6rem);
+  line-height: 1;
+}
+
+/* La palabra en rojo tiene animacion de color */
+.hero-titulo span {
+  color: var(--color-rojo);
+  animation: parpadeo-color 3s ease-in-out infinite;
+}
+
+/* ANIMACION 1: el color cambia entre rojo y naranja */
+@keyframes parpadeo-color {
+  0%, 100% { color: var(--color-rojo); }
+  50%       { color: var(--color-naranja); }
+}
+
+.hero-descripcion {
+  margin-top: 1rem;
+  font-size: 1.1rem;
+  color: var(--color-gris);
+  max-width: 480px;
+}
+
+/* Botones del hero, uno al lado del otro */
+.hero-botones {
+  display: flex;
+  gap: 1rem;
+  margin-top: 2rem;
+  flex-wrap: wrap;
+}
+
+/* Estilos generales para todos los botones */
+.boton {
+  display: inline-block;
+  padding: 0.75rem 1.75rem;
+  font-family: var(--fuente-cuerpo);
+  font-weight: 700;
+  font-size: 0.95rem;
+  border-radius: 8px;
+  border: 2px solid transparent;
+  cursor: pointer;
+  transition: transform var(--velocidad), background-color var(--velocidad);
+}
+
+/* Cuando pasas el mouse el boton sube un poquito */
+.boton:hover {
+  transform: translateY(-3px);
+}
+
+/* Boton rojo relleno */
+.boton-principal {
+  background-color: var(--color-rojo);
+  color: #fff;
+}
+
+.boton-principal:hover {
+  background-color: #c1121f;
+}
+
+/* Boton con solo borde */
+.boton-secundario {
+  background-color: transparent;
+  border-color: var(--color-texto);
+  color: var(--color-texto);
+}
+
+.boton-secundario:hover {
+  background-color: var(--color-texto);
+  color: var(--color-fondo);
+}
+
+/* Contenedor de las 3 portadas del hero */
+.hero-imagenes {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: auto auto;
+  gap: 1rem;
+}
+
+/* La imagen grande ocupa las 2 filas a la izquierda */
+.hero-imagen-grande {
+  grid-row: 1 / 3;
+  border-radius: var(--borde-redondo);
+  overflow: hidden;
+  position: relative;
+}
+
+/* ANIMACION 2: borde de colores giratorio en la imagen destacada */
+.hero-imagen-grande::before {
+  content: '';
+  position: absolute;
+  inset: -3px;
+  border-radius: calc(var(--borde-redondo) + 3px);
+  background: conic-gradient(var(--color-rojo), var(--color-naranja), var(--color-rojo));
+  z-index: -1;
+  animation: girar-borde 4s linear infinite;
+}
+
+@keyframes girar-borde {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(360deg); }
+}
+
+.hero-imagen-grande img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  border-radius: var(--borde-redondo);
+}
+
+/* Las dos imagenes chicas a la derecha */
+.hero-imagen-chica {
+  border-radius: var(--borde-redondo);
+  overflow: hidden;
+  border: 1px solid var(--color-borde);
+}
+
+.hero-imagen-chica img {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+  display: block;
+}
+
+
+/* ================================
+   FILTROS (chips de editorial)
+   ================================ */
+.seccion-filtros {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 2rem 2rem;
+}
+
+.filtros-titulo {
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  color: var(--color-gris);
+  margin-bottom: 0.8rem;
+}
+
+/* Los chips van en fila y si no caben se bajan a la siguiente */
+.filtros-lista {
+  display: flex;
+  gap: 0.6rem;
+  flex-wrap: wrap;
+}
+
+.chip {
+  padding: 0.4rem 1rem;
+  font-size: 0.85rem;
+  font-weight: 700;
+  border-radius: 999px;
+  border: 1px solid var(--color-borde);
+  background: var(--color-superficie);
+  color: var(--color-gris);
+  cursor: pointer;
+  transition: background-color var(--velocidad), color var(--velocidad), border-color var(--velocidad);
+}
+
+/* Chip activo o cuando pasas el mouse */
+.chip:hover,
+.chip:focus {
+  background-color: var(--color-rojo);
+  color: #fff;
+  border-color: var(--color-rojo);
+}
+
+
+/* ================================
+   LAYOUT: Catalogo + Sidebar
+   Grid de 2 columnas
+   ================================ */
+.contenedor-catalogo {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 2rem 4rem;
+  display: grid;
+  grid-template-columns: 1fr 280px;
+  gap: 2rem;
+}
+
+.titulo-seccion {
+  font-family: var(--fuente-titulo);
+  font-size: 2.2rem;
+  margin-bottom: 1.5rem;
+}
+
+/* La vitrina de tarjetas se adapta sola al ancho disponible */
+.vitrina {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+  gap: 1.5rem;
+}
+
+
+/* ================================
+   TARJETA DE PRODUCTO
+   ================================ */
+.tarjeta {
+  background: var(--color-tarjeta);
+  border: 1px solid var(--color-borde);
+  border-radius: var(--borde-redondo);
+  overflow: hidden;
+  transition: transform var(--velocidad), box-shadow var(--velocidad);
+  position: relative;
+}
+
+/* ANIMACION 3: la tarjeta sube y tiene sombra al pasar el mouse */
+.tarjeta:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.5);
+}
+
+/* Contenedor de la portada del libro */
+.tarjeta-portada {
+  width: 100%;
+  aspect-ratio: 2 / 3;
+  overflow: hidden;
+  position: relative;
+}
+
+.tarjeta-portada img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform var(--velocidad);
+}
+
+/* La imagen se agranda un poco cuando pasas el mouse */
+.tarjeta:hover .tarjeta-portada img {
+  transform: scale(1.05);
+}
+
+/* Capa roja que aparece encima de la imagen al hacer hover */
+.tarjeta-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(230, 57, 70, 0.75);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  color: #fff;
+  font-size: 0.9rem;
+  opacity: 0;
+  transition: opacity var(--velocidad);
+}
+
+.tarjeta:hover .tarjeta-overlay {
+  opacity: 1;
+}
+
+/* Etiqueta de estado arriba a la izquierda */
+.etiqueta {
+  position: absolute;
+  top: 0.6rem;
+  left: 0.6rem;
+  padding: 0.2rem 0.6rem;
+  font-size: 0.7rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  border-radius: 4px;
+  z-index: 2;
+}
+
+/* Los 3 estados del producto usan las variables CSS de arriba */
+.etiqueta-disponible {
+  background-color: var(--disponible);
+  color: #000;
+}
+
+.etiqueta-agotado {
+  background-color: var(--agotado);
+  color: #fff;
+}
+
+.etiqueta-preventa {
+  background-color: var(--preventa);
+  color: #000;
+}
+
+/* Texto debajo de la portada */
+.tarjeta-info {
+  padding: 0.9rem;
+}
+
+.tarjeta-nombre {
+  font-weight: 700;
+  font-size: 0.95rem;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.tarjeta-autor {
+  font-size: 0.78rem;
+  color: var(--color-gris);
+  margin-top: 0.2rem;
+}
+
+.tarjeta-precio {
+  font-family: var(--fuente-titulo);
+  font-size: 1.3rem;
+  color: var(--color-rojo);
+  margin-top: 0.5rem;
+}
+
+
+/* ================================
+   ASIDE - Panel lateral de novedades
+   ================================ */
+aside {
+  background: var(--color-superficie);
+  border: 1px solid var(--color-borde);
+  border-radius: var(--borde-redondo);
+  padding: 1.5rem;
+  align-self: start;
+}
+
+.aside-titulo {
+  font-family: var(--fuente-titulo);
+  font-size: 1.4rem;
+  margin-bottom: 1rem;
+}
+
+/* Cada item del aside va en fila con Flexbox */
+.aside-item {
+  display: flex;
+  gap: 0.8rem;
+  align-items: center;
+  padding: 0.7rem 0;
+  border-bottom: 1px solid var(--color-borde);
+}
+
+.aside-item:last-child {
+  border-bottom: none;
+}
+
+/* Miniatura del libro en el aside */
+.aside-miniatura {
+  width: 48px;
+  height: 64px;
+  border-radius: 4px;
+  overflow: hidden;
+  flex-shrink: 0;
+}
+
+.aside-miniatura img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.aside-nombre {
+  font-size: 0.88rem;
+  font-weight: 700;
+}
+
+.aside-autor {
+  font-size: 0.78rem;
+  color: var(--color-gris);
+}
+
+
+/* ================================
+   FOOTER
+   ================================ */
+footer {
+  background: var(--color-superficie);
+  border-top: 1px solid var(--color-borde);
+  padding: 3rem 2rem;
+}
+
+/* Grid que se adapta segun el ancho de pantalla */
+.footer-contenido {
+  max-width: 1280px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 2rem;
+}
+
+.footer-marca {
+  font-family: var(--fuente-titulo);
+  font-size: 2rem;
+  color: var(--color-rojo);
+}
+
+.footer-descripcion {
+  font-size: 0.85rem;
+  color: var(--color-gris);
+  margin-top: 0.5rem;
+}
+
+.footer-columna h4 {
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  color: var(--color-gris);
+  margin-bottom: 0.8rem;
+}
+
+.footer-columna ul {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.footer-columna a {
+  font-size: 0.9rem;
+  color: var(--color-texto);
+  transition: color var(--velocidad);
+}
+
+.footer-columna a:hover {
+  color: var(--color-rojo);
+}
+
+/* Linea final de copyright */
+.footer-copyright {
+  max-width: 1280px;
+  margin: 2rem auto 0;
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--color-borde);
+  font-size: 0.8rem;
+  color: var(--color-gris);
+  text-align: center;
+}
+
+
+/* ================================
+   MEDIA QUERIES - pantallas pequeñas
+   Enfoque Desktop First
+   ================================ */
+
+/* Tablet (menos de 1024px de ancho) */
+@media (max-width: 1024px) {
+
+  /* El hero pasa a 1 sola columna */
+  .hero {
+    grid-template-columns: 1fr;
+    text-align: center;
+  }
+
+  .hero-descripcion,
+  .hero-botones {
+    margin-left: auto;
+    margin-right: auto;
+    justify-content: center;
+  }
+
+  /* El aside se mueve abajo del catalogo */
+  .contenedor-catalogo {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Movil (menos de 640px de ancho) */
+@media (max-width: 640px) {
+
+  /* El menu se oculta en movil */
+  .menu-lista {
+    display: none;
+  }
+
+  /* La busqueda ocupa todo el ancho */
+  .caja-busqueda {
+    flex: 1 1 100%;
+  }
+
+  /* Las tarjetas se hacen mas chicas */
+  .vitrina {
+    grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+  }
+
+  /* Las imagenes del hero se ocultan en movil */
+  .hero-imagenes {
+    display: none;
+  }
+}

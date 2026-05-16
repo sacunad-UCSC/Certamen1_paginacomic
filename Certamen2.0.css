@@ -4,9 +4,7 @@
    ================================================ */
 
 
-/* ================================
-   COLORES GLOBALES
-   ================================ */
+/* Colores Generales */
 :root {
   --color-fondo:       #0d0d0d;
   --color-superficie:  #161616;
@@ -30,9 +28,6 @@
 }
 
 
-/* ================================
-   RESET - quitar estilos por defecto
-   ================================ */
 * {
   margin: 0;
   padding: 0;
@@ -58,9 +53,9 @@ img {
 }
 
 
-/* ================================
-   ENCABEZADO (HEADER)
-   ================================ */
+/*
+   Encabezado de la pagina
+*/
 header {
   position: sticky;
   top: 0;
@@ -71,7 +66,6 @@ header {
   padding: 0 2rem;
 }
 
-/* Flexbox para poner todo en una fila horizontal */
 nav {
   display: flex;
   align-items: center;
@@ -142,10 +136,7 @@ nav {
 }
 
 
-/* ================================
-   SECCION HERO
-   Grid de 2 columnas: texto | imagenes
-   ================================ */
+/* Seccion Hero */
 .hero {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -169,7 +160,6 @@ nav {
   animation: parpadeo-color 3s ease-in-out infinite;
 }
 
-/* ANIMACION 1: el color cambia entre rojo y naranja */
 @keyframes parpadeo-color {
   0%, 100% { color: var(--color-rojo); }
   50%       { color: var(--color-naranja); }
@@ -182,7 +172,6 @@ nav {
   max-width: 480px;
 }
 
-/* Botones del hero, uno al lado del otro */
 .hero-botones {
   display: flex;
   gap: 1rem;
@@ -246,7 +235,6 @@ nav {
   position: relative;
 }
 
-/* ANIMACION 2: borde de colores giratorio en la imagen destacada */
 .hero-imagen-grande::before {
   content: '';
   position: absolute;
@@ -285,9 +273,7 @@ nav {
 }
 
 
-/* ================================
-   FILTROS (chips de editorial)
-   ================================ */
+/* Filtros */
 .seccion-filtros {
   max-width: 1280px;
   margin: 0 auto;
@@ -330,10 +316,9 @@ nav {
 }
 
 
-/* ================================
+/*
    LAYOUT: Catalogo + Sidebar
-   Grid de 2 columnas
-   ================================ */
+ */
 .contenedor-catalogo {
   max-width: 1280px;
   margin: 0 auto;
@@ -357,9 +342,9 @@ nav {
 }
 
 
-/* ================================
+/* 
    TARJETA DE PRODUCTO
-   ================================ */
+ */
 .tarjeta {
   background: var(--color-tarjeta);
   border: 1px solid var(--color-borde);
@@ -471,9 +456,9 @@ nav {
 }
 
 
-/* ================================
-   ASIDE - Panel lateral de novedades
-   ================================ */
+/* 
+   Panel lateral de novedades
+ */
 aside {
   background: var(--color-superficie);
   border: 1px solid var(--color-borde);
@@ -527,9 +512,9 @@ aside {
 }
 
 
-/* ================================
+/* 
    FOOTER
-   ================================ */
+ */
 footer {
   background: var(--color-superficie);
   border-top: 1px solid var(--color-borde);
